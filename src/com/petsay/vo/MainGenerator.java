@@ -18,7 +18,7 @@ public class MainGenerator {
 		Schema schema = new Schema(2, "com.petsay.database.greendao");
 		generatorTable(schema);
 		try {
-			new DaoGenerator().generateAll(schema, "../Chongwushuo_Android/PetSay/src-gen");
+			new DaoGenerator().generateAll(schema, "../Chongwushuo_Android/PetSay/src");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

@@ -21,7 +21,6 @@ public class petTagGenerator {
 //	}
 
 	public static void generatorTable(Schema schema) {
-
 		/**
 		 * private String id;// 主键
     private String type;// 类型
@@ -34,6 +33,8 @@ public class petTagGenerator {
     private String createTime;// 创建时间
 		 */
 		Entity dt = schema.addEntity("PetTagVo");
+		dt.setJavaPackage("com.petsay.vo.petalk");
+		dt.setJavaPackageDao("com.petsay.database.greendao.petsay");
 		dt.addStringProperty("id");
 		dt.addStringProperty("name");
 		dt.addStringProperty("iconUrl");

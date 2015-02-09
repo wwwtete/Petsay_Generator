@@ -24,10 +24,14 @@ public class ChatDaoGenerator {
 //			e.printStackTrace();
 //		}
 //	}
-
+	
+	private static String daoPackage = "com.petsay.database.greendao.chat";
+	private static String javaPackage = "com.petsay.vo.chat";
 	public static void generatorTable(Schema schema) {
 		//联系人数据表
 		Entity user = schema.addEntity("ChatContacts");
+		user.setJavaPackage(javaPackage);
+		user.setJavaPackageDao(daoPackage);
 //		user.addIdProperty().autoincrement();
 		//用户ID
 		Property userId = user.addStringProperty("petId").primaryKey().getProperty();
@@ -38,6 +42,8 @@ public class ChatDaoGenerator {
 
 		//聊天信息数据表
 		Entity msg = schema.addEntity("ChatMsgEntity");
+		msg.setJavaPackage(javaPackage);
+		msg.setJavaPackageDao(daoPackage);
 		msg.addIdProperty().autoincrement();
 		//时间
 		msg.addDateProperty("date");
@@ -65,6 +71,8 @@ public class ChatDaoGenerator {
 		
 		//最新聊天信息表(只保存一条聊天信息)
 		Entity newest = schema.addEntity("NewestMsg");
+		newest.setJavaPackage(javaPackage);
+		newest.setJavaPackageDao(daoPackage);
 		Property contactsKey = newest.addStringProperty("petId").primaryKey().getProperty();
 		Property msgId = newest.addLongProperty("chatMsgEntityId").notNull().getProperty();
 		newest.addIntProperty("msgCount");
@@ -74,6 +82,8 @@ public class ChatDaoGenerator {
 		
 		//黑名单列表
 		Entity blacklist = schema.addEntity("ChatBlack");
+		blacklist.setJavaPackage(javaPackage);
+		blacklist.setJavaPackageDao(daoPackage);
 		blacklist.addIdProperty().autoincrement();
 		blacklist.addStringProperty("petId");
 		
